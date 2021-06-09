@@ -93,7 +93,15 @@
 												white-space: nowrap; text-overflow: ellipsis;">
 												
 							<a href="javascript:OpenWindow('detail.do?bno=${board.bno }','상세보기',800,700);">
-								${board.title }								
+								<span class="col-sm-12 ">${board.title }
+									<c:if test="${board.replycnt ne 0 }">		
+										<span class="nav-item">															
+										&nbsp;&nbsp;<i class="fa fa-comment"></i>
+										<span class="badge badge-warning navbar-badge">${board.replycnt}</span>
+										</span>
+										
+									</c:if>
+								</span>								
 							</a>
 							</td>
 							<td>${board.writer }</td>

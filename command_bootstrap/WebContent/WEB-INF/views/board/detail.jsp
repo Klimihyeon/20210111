@@ -148,6 +148,7 @@
  	
 </script>
  
+ <%@ include file="./reply_js.jsp" %>
  
  
  

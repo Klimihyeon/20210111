@@ -9,7 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import kr.or.ddit.command.SearchCriteria;
 import kr.or.ddit.dto.BoardVO;
 
-public class BoardDAOImple implements BoardDAO {
+public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public List<BoardVO> selectBoardCriteria(SqlSession session,SearchCriteria cri) throws SQLException {

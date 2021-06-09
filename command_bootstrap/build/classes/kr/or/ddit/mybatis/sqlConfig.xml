@@ -16,6 +16,8 @@
 		<typeAlias type="kr.or.ddit.dto.MemberVO" alias="member" />
 		<typeAlias type="kr.or.ddit.dto.NoticeVO" alias="notice" />
 		<typeAlias type="kr.or.ddit.dto.BoardVO" alias="board" />
+		<typeAlias type="kr.or.ddit.dto.ReplyVO" alias="reply" />
+		
 	</typeAliases>
 	
 	
@@ -39,6 +41,7 @@
 		<mapper resource="kr/or/ddit/mybatis/Member-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Notice-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Board-Mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/Reply-Mapper.xml"/>
 	</mappers>
 </configuration>
 

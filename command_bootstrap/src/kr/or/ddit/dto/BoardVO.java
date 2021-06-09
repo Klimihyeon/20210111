@@ -12,7 +12,16 @@ public class BoardVO {
 	private Date regDate;     // 등록날짜
 	private Date updatedate;  // 수정날짜
 	
+	private int replycnt; // 댓글 개수
 	
+	
+	
+	public int getReplycnt() {
+		return replycnt;
+	}
+	public void setReplycnt(int replycnt) {
+		this.replycnt = replycnt;
+	}
 	public int getBno() {
 		return bno;
 	}
