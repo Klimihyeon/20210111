@@ -107,7 +107,7 @@
 						<label for="newReplyText">Reply Text</label>
 						<input class="form-control" type="text"	placeholder="REPLY TEXT" id="newReplyText">
 						<br/>
-						<button type="button" class="btn btn-primary" id="replyAddBtn">ADD REPLY</button>
+						<button type="button" class="btn btn-primary" id="replyAddBtn" onclick="replyRegist_go();">ADD REPLY</button>
 					</div>				
 				</div>			
 				
@@ -118,7 +118,7 @@
   <!-- /.content-wrapper -->
 
 <form role="form">
-	<input type="hidden" name="nno" value="${board.bno }" />
+	<input type="hidden" name="bno" value="${board.bno }" />
 </form>
 	
   
@@ -146,6 +146,7 @@
 		}
 	}
  	
+	
 </script>
  
  <%@ include file="./reply_js.jsp" %>

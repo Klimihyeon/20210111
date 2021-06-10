@@ -91,7 +91,7 @@ public class ReplyServiceImpl implements ReplyService{
 		SqlSession session = sqlSessionFactory.openSession();
 		try {
 			int count = replyDAO.countReply(session, bno);
-			return 0;
+			return count;
 		} finally {
 			session.close();
 		}
