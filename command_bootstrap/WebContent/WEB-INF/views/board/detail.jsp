@@ -93,8 +93,7 @@
 							<div class="time-label" id="repliesDiv">
 								<span class="bg-green">Replies List </span>							
 							</div>
-							<div>
-							</div>
+							
 							
 						</div>
 						<div class='text-center'>
