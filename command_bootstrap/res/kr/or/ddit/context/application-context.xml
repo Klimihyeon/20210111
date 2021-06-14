@@ -8,10 +8,16 @@
 
 	<!-- Repository Layer -->
 	<bean id="menuDAO"  class="kr.or.ddit.dao.MenuDAOImpl" />
+	
 	<bean id="memberDAO" class="kr.or.ddit.dao.MemberDAOImpl" />
+	
 	<bean id="noticeDAO" class="kr.or.ddit.dao.NoticeDAOImpl" />
+	
 	<bean id="boardDAO" class="kr.or.ddit.dao.BoardDAOImpl" />
 	<bean id="replyDAO" class="kr.or.ddit.dao.ReplyDAOImpl" />
+	
+	<bean id="attachDAO" class="kr.or.ddit.dao.AttachDAOImpl" />
+	<bean id="pdsDAO" class="kr.or.ddit.dao.PdsDAOImpl" />
 	
 	<!-- Service layer -->
 	<bean id="menuService" class="kr.or.ddit.service.MenuServiceImpl">
@@ -34,6 +40,12 @@
 	<bean id="replyService" class="kr.or.ddit.service.ReplyServiceImpl">
 		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
 		<property name="replyDAO" ref-value="replyDAO"/>
+	</bean>
+	
+	<bean id="pdsService" class="kr.or.ddit.service.PdsServiceImpl" >
+		<property name="sqlSessionFactory" ref-value="sqlSessionFactory" />
+		<property name="pdsDAO" ref-value="pdsDAO" />
+		<property name="attachDAO" ref-value="attachDAO" />
 	</bean>
 	
 </beans>

@@ -26,6 +26,15 @@ public interface PdsService {
 
 	// 글읽기(조회수증가)
 	PdsVO read(int pno) throws SQLException;
-
+	
+	
+	//첨부파일 조회
+	AttachVO getAttachByAno(int ano)throws SQLException;
+	
+	//파일정보 삭제
+	void removeAttachByAno(int ano)throws SQLException;
 
 }
+
+
+

@@ -18,7 +18,7 @@
 		<typeAlias type="kr.or.ddit.dto.BoardVO" alias="board" />
 		<typeAlias type="kr.or.ddit.dto.ReplyVO" alias="reply" />
 		<typeAlias type="kr.or.ddit.dto.PdsVO" alias="pds" />
-		<typeAlias type="kr.or.ddit.dto.PdsVO" alias="pds" />
+		<typeAlias type="kr.or.ddit.dto.AttachVO" alias="attach" />
 		
 	</typeAliases>
 	
@@ -45,6 +45,7 @@
 		<mapper resource="kr/or/ddit/mybatis/Board-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Reply-Mapper.xml"/>
 		<mapper resource="kr/or/ddit/mybatis/Pds-Mapper.xml"/>
+		<mapper resource="kr/or/ddit/mybatis/Attach-Mapper.xml"/>
 	</mappers>
 </configuration>
 
