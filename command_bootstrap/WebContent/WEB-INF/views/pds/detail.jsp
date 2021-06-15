@@ -45,17 +45,17 @@
 							<div class="form-group col-sm-4" >
 								<label for="writer">작성자</label>
 								<input type="text" class="form-control" id="writer" 
-									 value="" readonly />
+									 value="${pds.writer }" readonly />
 							</div>		
 							
 							<div class="form-group col-sm-4" >
 								<label for="regDate">작성일</label>
 								<input type="text" class="form-control" id="regDate" 
-									value="" readonly />
+									value="<fmt:formatDate value="${pds.regDate }" pattern="yyyy-MM-dd" />" readonly />
 							</div>	
 							<div class="form-group col-sm-4" >
 								<label for="viewcnt">조회수</label>
-								<input type="text" class="form-control" id="viewcnt" value=""
+								<input type="text" class="form-control" id="viewcnt" value="${pds.viewcnt }"
 									 readonly />
 							</div>	
 						</div>	
@@ -70,7 +70,22 @@
 								</div>			
 								<div class="card-footer">
 									<div class="row">
-										
+										<c:forEach items="${pds.attachList }" var="attach">
+											<div class="col-md-4 col-sm-4 col-xs-12"  style="cursor:pointer;"
+												 onclick="location.href='<%=request.getContextPath()%>/pds/getFile.do?ano=${attach.ano }';">
+												<div class="info-box">	
+												 	<span class="info-box-icon bg-yellow">
+														<i class="fa fa-copy"></i>
+													</span>
+													<div class="info-box-content">
+														<span class ="info-box-text">
+															<fmt:formatDate value="${attach.regDate }" pattern="yyyy-MM-dd" />	
+														</span>
+														<span class ="info-box-number">${attach.fileName }</span>
+													</div>
+												</div>
+											 </div>							
+										</c:forEach>
 									</div>
 								</div>				
 							</div>
@@ -79,8 +94,8 @@
 					</div>
 					<div class="card-footer">
 						
-							<button type="button" id="modifyBtn" class="btn btn-warning">Modify</button>						
-					    	<button type="button" id="removeBtn" class="btn btn-danger">REMOVE</button>
+							<button type="button" id="modifyBtn" class="btn btn-warning" onclick="submit_go('modifyForm.do','${pds.pno}');">Modify</button>						
+					    	<button type="button" id="removeBtn" class="btn btn-danger" onclick="submit_go('remove.do','${pds.pno}');">REMOVE</button>
 					   
 					    <button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">CLOSE </button>
 					</div>									
@@ -89,4 +104,29 @@
 		</div><!-- end row  -->		
 		
     </section>
+    
+<script>
+	function submit_go(url,pno){
+		//alert(url);
+		location.href=url+"?pno="+pno;
+	}
+</script>
 </body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

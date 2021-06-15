@@ -104,8 +104,6 @@
 	     </div>
    	</section>
 
-<script src="/resources/js/common.js" ></script>
-
 </body>
 
 

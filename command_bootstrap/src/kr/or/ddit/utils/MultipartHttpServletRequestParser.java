@@ -68,7 +68,10 @@ public class MultipartHttpServletRequestParser {
 	}
 	
 	public String getParameter(String paramName) {
-		return this.paramString.get(paramName)[0];
+		String[] param = this.paramString.get(paramName);
+		String result = null;
+		if(param !=null) result=param[0];
+		return result;
 	}
 	public String[] getParameterValues(String paramName) {
 		return this.paramString.get(paramName);
@@ -95,13 +98,22 @@ public class MultipartHttpServletRequestParser {
 	}
 	
 	public FileItem getFileItem(String paramName) {
-		return paramFile.get(paramName).get(0);
+		
+		List<FileItem> itemList = paramFile.get(paramName);
+		FileItem result = null;
+		
+		if(itemList != null) result = itemList.get(0);
+			
+		return result;
 	}
 
 	public FileItem[] getFileItems(String paramName) {
 		List<FileItem> items = paramFile.get(paramName);
-		FileItem[] files = new FileItem[items.size()];
-		items.toArray(files);
+		FileItem[] files =null;
+		if(items!=null) {
+			files = new FileItem[items.size()];
+			items.toArray(files);
+		}
 		return files;
 	}
 }

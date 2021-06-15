@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.net.URLEncoder;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -37,8 +38,18 @@ public class FileDownloadResolver {
 		response.setContentLength((int) downloadFile.length());
 
 		String headerKey = "Content-Disposition";
-		String headerValue = String.format("attachment; filename=\"%s\"", 
-				MakeFileName.parseFileNameFromUUID(downloadFile.getName(),"\\$\\$"));
+		
+		//한글깨짐 방지 : ISO-8859-1
+		String sendFileName = MakeFileName.parseFileNameFromUUID(downloadFile.getName(),"\\$\\$");
+				
+		String header = request.getHeader("User-Agent");		
+		if(header.contains("MSIE")) {
+			sendFileName = URLEncoder.encode(sendFileName,"UTF-8");			
+		}else {
+			sendFileName = new String(sendFileName.getBytes("utf-8"),"ISO-8859-1");
+		}
+		
+		String headerValue =String.format("attachment; filename=\"%s\"",sendFileName);		
 		response.setHeader(headerKey, headerValue);
 		
 		// 파일 내보내기
