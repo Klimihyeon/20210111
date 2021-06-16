@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	<bean id="sum" class="com.spring.module.Summation" />
+	<bean id="minus" class="com.spring.module.Minus" />
+	<bean id="multi" class="com.spring.module.Multiplex" />
+	<bean id="div" class="com.spring.module.Divide" />
+	
+	
+	<bean id="calculator" class="com.spring.machine.Calculator" >
+		<property name="sum" ref="sum" />
+		<property name="minus" ref="minus" />
+		<property name="multi" ref="multi" />
+		<property name="div" ref="div" />
+	</bean>		
+</beans>
