@@ -43,7 +43,7 @@
    					 <div class="input-group row">	
    					 	  <!-- sort num -->
 					  	<select class="form-control col-md-3" name="perPageNum" id="perPageNum"
-					  		onchange="list_go();">
+					  		onchange="list_go(1);">
 					  		<option value="10" >정렬개수</option>
 					  		<option value="2" ${cri.perPageNum == 2 ? 'selected':''}>2개씩</option>
 					  		<option value="3" ${cri.perPageNum == 3 ? 'selected':''}>3개씩</option>

@@ -13,6 +13,7 @@
 	</decorator>
 
 	<excludes>		
-		<pattern>/resources/*</pattern>					
+		<pattern>/resources/*</pattern>	
+		<pattern>**/log**</pattern>				
 	</excludes>		
 </decorators>
