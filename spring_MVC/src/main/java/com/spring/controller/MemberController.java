@@ -16,6 +16,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -130,6 +131,17 @@ public class MemberController {
 			in.close();
 		}
 		return entity;
+	}
+	
+	@RequestMapping(value = "/getPictureById/{id}",method=RequestMethod.GET, produces = "text/plain;charset=utf-8")
+	@ResponseBody
+	public ResponseEntity<byte[]> getPictureById(@PathVariable("id") String id) throws Exception {
+		ResponseEntity<byte[]> entity = null;
+		
+		String picture = memberService.getMember(id).getPicture();
+		entity = getPicture(picture);		
+		
+		return entity;		
 	}
 
 	@RequestMapping("/idCheck")

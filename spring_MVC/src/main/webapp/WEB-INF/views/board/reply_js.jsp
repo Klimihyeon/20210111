@@ -6,7 +6,7 @@
 {{#each .}}
 <div class="replyLi" >
 	<div class="user-block">
-		<img src="/member/getPictureById.do?id={{replyer}}" class="img-circle img-bordered-sm"/>
+		<img src="<%=request.getContextPath()%>/member/getPictureById/{{replyer}}" class="img-circle img-bordered-sm"/>
     </div>
 	
  	<div class="timeline-item" >
@@ -60,14 +60,14 @@
 var replyPage=1;
 
 window.onload=function(){
-	getPage("<%=request.getContextPath()%>/reply/list.do?bno=${board.bno}&page="+replyPage);
+	getPage("<%=request.getContextPath()%>/replies/${board.bno}/"+replyPage);
 	
 	$('.pagination').on('click','li a',function(event){
 		//alert();
 				
 		if($(this).attr("href")) {
 			replyPage=$(this).attr("href");
-			getPage("<%=request.getContextPath()%>/reply/list.do?bno=${board.bno}&page="+replyPage);
+			getPage("<%=request.getContextPath()%>/replies/${board.bno}/"+replyPage);
 		}	
 		
 		return false;
@@ -141,7 +141,7 @@ function replyRegist_go(){
 			"replytext":replytext	
 	}
 	$.ajax({
-		url:"/reply/regist.do",
+		url:"/replies",
 		type:"post",
 		data:JSON.stringify(data),	
 		contentType:'application/json',
@@ -150,7 +150,7 @@ function replyRegist_go(){
 			if(result[0]=="SUCCESS"){
 				alert('댓글이 등록되었습니다.');
 				replyPage=result[1]; //페이지이동
-				getPage("/reply/list.do?bno="+bno+"&page="+result[1]); //리스트 출력
+				getPage("/replies/"+bno+"/"+result[1]); //리스트 출력
 				$('#newReplyText').val("");				
 			}else{
 				alert('댓글이 등록을 실패했습니다.');	
@@ -174,20 +174,22 @@ function replyModify_go(){
 	var rno=$('.modal-title').text();
 	var replytext=$('#replytext').val();
 	
-	var sendData={
-			rno:rno,
+	var sendData={		
 			replytext:replytext
 	}
 	
 
 	$.ajax({
-		url:"<%=request.getContextPath()%>/reply/modify.do",
-		type:"post",
+		url:"<%=request.getContextPath()%>/replies/"+rno,
+		type:"PUT",
+		headers:{			
+			"X-HTTP-Method-Override":"PUT"
+		},
 		data:JSON.stringify(sendData),
 		contentType:"application/json",
 		success:function(result){
 			alert("수정되었습니다.");			
-			getPage("<%=request.getContextPath()%>/reply/list.do?bno=${board.bno}&page="+replyPage);
+			getPage("<%=request.getContextPath()%>/replies/${board.bno}/"+replyPage);
 		},
 		error:function(error){
 			alert('수정 실패했습니다.');		
@@ -205,11 +207,14 @@ function replyRemove_go(){
 	var rno=$('.modal-title').text();
 	
 	$.ajax({
-		url:"<%=request.getContextPath()%>/reply/remove.do?rno="+rno+"&page="+replyPage+"&bno=${board.bno}",
-		type:"get",
+		url:"<%=request.getContextPath()%>/replies/${board.bno}/"+rno+"/"+replyPage,
+		type:"DELETE",
+		headers:{
+			"X-HTTP-Override":"delete"
+		},	
 		success:function(page){
 			alert("삭제되었습니다.");
-			getPage("<%=request.getContextPath()%>/reply/list.do?bno=${board.bno}&page="+page);
+			getPage("<%=request.getContextPath()%>/replies/${board.bno}/"+page);
 			replyPage=page;
 		},
 		error:function(error){
