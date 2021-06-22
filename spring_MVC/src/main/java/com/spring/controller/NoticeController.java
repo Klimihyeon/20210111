@@ -30,10 +30,10 @@ public class NoticeController {
 	public void main()throws Exception{}
 	
 	@RequestMapping("/list")
-	public void list(SearchCriteria cri, Model model)throws SQLException{
+	public void list(SearchCriteria cri, Model model)throws Exception{
 		
 		Map<String,Object> dataMap = noticeService.getNoticeList(cri);
-		
+				
 		model.addAttribute("dataMap",dataMap);	
 		
 	}
@@ -50,6 +50,7 @@ public class NoticeController {
 		
 		NoticeVO notice = regReq.toNoticeVO();
 		notice.setTitle((String)request.getAttribute("XSStitle"));
+		
 		
 		noticeService.regist(notice);
 		return url;

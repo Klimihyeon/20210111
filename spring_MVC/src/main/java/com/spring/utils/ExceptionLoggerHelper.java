@@ -13,7 +13,7 @@ import com.spring.dto.MemberVO;
 
 public class ExceptionLoggerHelper {
 	
-	public static void write(HttpServletRequest request, Exception e, Object res) {
+		public static void write(HttpServletRequest request, Exception e, Object res) {
 		
 		String savePath = GetUploadPath.getUploadPath("error.log").replace("/", File.separator);
 		String logFilePath=savePath+File.separator+"system_exception_log.csv";		

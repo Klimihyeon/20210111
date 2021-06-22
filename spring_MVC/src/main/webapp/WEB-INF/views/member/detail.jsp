@@ -105,6 +105,7 @@
 window.onload=function(){
 	MemberPictureThumb(document.querySelector('[data-id="${member.id}"]'),'${member.picture}');
 }
+
 </script>  
   
 </body>

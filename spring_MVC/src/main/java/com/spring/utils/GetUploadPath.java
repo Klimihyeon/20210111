@@ -10,7 +10,7 @@ import org.apache.ibatis.io.Resources;
 public class GetUploadPath {
 	private static Properties properties = new Properties();
 	static{
-		String resource = "kr/or/ddit/properties/uploadPath.properties";		
+		String resource = "com/spring/properties/uploadPath.properties";		
 		try {
 			Reader reader = Resources.getResourceAsReader(resource);
 			properties.load(reader);				
