@@ -42,8 +42,8 @@
 					login-processing-url="/commons/loginPost"
 					username-parameter="id"
 			 		password-parameter="pwd"
-					default-target-url="/"
 					authentication-success-handler-ref="loginSuccessHandler"
+					authentication-failure-handler-ref="loginFailureHandler"
 					/>
 		<logout logout-url="/commons/logout"
 				logout-success-url="/"
@@ -54,7 +54,9 @@
 				class="com.spring.security.LoginSuccessHandler"
 				p:defaultTargetUrl="/"
 				/>
-
+	<beans:bean id="loginFailureHandler"
+				class="com.spring.security.LoginFailureHandler"
+				/>	
 </beans:beans>
 
 
