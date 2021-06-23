@@ -11,7 +11,9 @@
 </head>
 <body>
 	<h1>index.jsp</h1>
-	
+	<sec:authorize access="isAuthenticated()">
+	<h1>${loginUser.name }님 환영합니다.</h1>
+	</sec:authorize>
 	
 	<ul>
 		<li><a href="<c:url value='/home/main' />">/home/main</a></li>
@@ -28,10 +30,12 @@
 	
 	<!-- spring security 3.xxx 이하만 가능   -->
 	<sec:authorize access="!isAuthenticated()">
-	<a href="/security/spring_security_login">로그인</a>
+	<!-- <a href="/security/spring_security_login">로그인</a> -->
+	<a href="/security/commons/login">로그인</a>
 	</sec:authorize>
 	<sec:authorize access="isAuthenticated()">
-	<a href="/security/j_spring_security_logout">로그아웃</a>
+	<!-- <a href="/security/j_spring_security_logout">로그아웃</a> -->
+	<a href="/security/commons/logout">로그아웃</a>
 	</sec:authorize>
 	
 </body>
