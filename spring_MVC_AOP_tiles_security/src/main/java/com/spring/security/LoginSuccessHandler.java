@@ -34,7 +34,8 @@ public class LoginSuccessHandler extends SavedRequestAwareAuthenticationSuccessH
 
 		// log 작성
 		logFile(loginUser, request);
-
+		
+		
 		super.onAuthenticationSuccess(request, response, authentication);
 	}
 	

@@ -41,7 +41,8 @@
 		<form-login  login-page="/common/loginForm.do?error=1"
 					 login-processing-url="/common/login.do"			 
 					 username-parameter="id"
-				 	 password-parameter="pwd"				
+				 	 password-parameter="pwd"	
+				 	 			
 				 	 authentication-success-handler-ref="loginSuccessHandler"
 				 	 authentication-failure-handler-ref="loginFailureHandler" />
 	
@@ -50,7 +51,17 @@
 				logout-success-url="/"
 				delete-cookies="JSESSIONID"	
 		/>
+		
+			
+		<session-management invalid-session-url="/common/loginTimeOut">
+			<concurrency-control 
+				expired-url="/common/loginExpired"
+				max-sessions="1"
+				session-registry-ref="sessionRegistry"				
+			/>	
+		</session-management>	
 	</http>
+	
 	
 	<beans:bean id="loginSuccessHandler"
 				class="com.spring.security.LoginSuccessHandler"
@@ -59,5 +70,15 @@
 	<beans:bean id="loginFailureHandler"
 				class="com.spring.security.LoginFailureHandler"
 				/>	
-	            
+	<beans:bean id="sessionRegistry" 
+	 			class="org.springframework.security.core.session.SessionRegistryImpl"
+	 			/>
 </beans:beans>
+
+
+
+
+
+
+
+

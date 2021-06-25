@@ -79,6 +79,7 @@ function upload_go(){
          
       },
       error:function(error){
+    	  AjaxErrorSecurityRedirectHandler(error.status);
          alert("현재 사진 업로드가 불가합니다.\n 관리자에게 연락바랍니다.");
       }
    });
@@ -113,7 +114,8 @@ var checkedID=""
       $.ajax({
          url : "idCheck.do?id="+input_ID.val(),
          method : "get",
-         success : function(result){
+         success : function(result,status,xhr){
+        	   alert(xhr.status);
                console.log(result);
                if(result == "duplicated"){
                   alert("중복된 아이디 입니다.");
@@ -126,8 +128,8 @@ var checkedID=""
                }
             
             },
-            error:function(error){
-               alert("시스템장애로 가입이 불가합니다.");
+            error:function(error){            	
+            	AjaxErrorSecurityRedirectHandler(error.status);
             }
          
       });
