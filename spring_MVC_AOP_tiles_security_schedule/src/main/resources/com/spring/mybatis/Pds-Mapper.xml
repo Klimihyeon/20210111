@@ -97,4 +97,10 @@
 	<select id="selectPdsSeqNext" resultType="int">
 		select pds_seq.nextval as pno from dual
 	</select>
+	
+	<select id="selectPdsByFileName"  resultType="pds">
+		select * 
+		from pds 
+		where content like '%'||#{fileName}||'%'		
+	</select>
 </mapper>

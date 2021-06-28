@@ -76,4 +76,10 @@ public class NoticeServiceImpl implements NoticeService {
 		noticeDAO.deleteNotice(nno);
 	}
 
+	@Override
+	public NoticeVO findFileInContent(String fileName) throws SQLException {
+		NoticeVO notice = noticeDAO.selectNoticeByFileName(fileName);
+		return notice;
+	}
+
 }

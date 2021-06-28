@@ -19,5 +19,39 @@
 		<scheduled ref="loginUserLogTask" 
 				   method="logScheduler"
 				   cron="*/10 * * * * *"/>
-	</scheduled-tasks>	  
+	</scheduled-tasks>	 
+	
+	
+	<beans:bean id="summernoteImageRemoveTask"
+	            class="com.spring.scheduler.SummernoteImageRemoveScheduler"
+	            p:noticeService-ref="noticeService"
+	            p:boardService-ref="boardService"
+	            p:pdsService-ref="pdsService"
+	            p:filePath-ref="imgPath"
+	            />
+	<scheduler id="summernoteImageScheduler"/>
+	
+	<scheduled-tasks scheduler="summernoteImageScheduler">
+		<scheduled ref="summernoteImageRemoveTask" 
+				   method="fileRemove"
+				   cron="*/10 * * * * *"/>
+	</scheduled-tasks>
+	
+	
+	<beans:bean id="memberPictureRemoveTask"
+	            class="com.spring.scheduler.RemoveMemberPictureScheduler"
+	            p:memberService-ref="memberService"
+	            p:picturePath-ref="picturePath"
+	            />
+	<scheduler id="memberPictureRemoveScheduler"/>
+	<scheduled-tasks scheduler="memberPictureRemoveScheduler">
+		<scheduled ref="memberPictureRemoveTask" 
+				   method="removePicture"
+				   cron="*/10 * * * * *"/>
+	</scheduled-tasks>
+	
+		            
 </beans:beans>
+
+
+

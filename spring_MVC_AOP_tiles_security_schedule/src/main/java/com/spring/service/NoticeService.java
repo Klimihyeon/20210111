@@ -11,6 +11,9 @@ public interface NoticeService {
 	// 목록조회
 	Map<String, Object> getNoticeList(SearchCriteria cri) throws SQLException;
 	
+	// 파일명으로 찾기
+	NoticeVO findFileInContent(String fileName)throws SQLException;
+	
 	// 상세보기
 	NoticeVO getNotice(int nno) throws SQLException;
 	

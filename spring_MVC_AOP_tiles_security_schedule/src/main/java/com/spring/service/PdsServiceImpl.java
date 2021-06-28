@@ -133,4 +133,10 @@ public class PdsServiceImpl implements PdsService {
 		pds.setAttachList(attachList);
 	}
 
+	@Override
+	public PdsVO findFileInContent(String fileName) throws SQLException {
+		PdsVO pds =  pdsDAO.selectPdsByFileName(fileName);
+		return pds;
+	}
+
 }

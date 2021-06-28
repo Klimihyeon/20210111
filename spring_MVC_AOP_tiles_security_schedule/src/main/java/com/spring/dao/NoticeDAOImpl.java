@@ -68,6 +68,12 @@ public class NoticeDAOImpl implements NoticeDAO {
 	public void deleteNotice(int nno) throws SQLException {
 		session.update("Notice-Mapper.deleteNotice",nno);
 	}
+
+	@Override
+	public NoticeVO selectNoticeByFileName(String fileName) throws SQLException {
+		NoticeVO notice = session.selectOne("Notice-Mapper.selectNoticeByFileName",fileName);
+		return notice;
+	}
 }
 
 

@@ -90,6 +90,13 @@
 		from notice 
 		where nno=#{nno}		
 	</update>
+	
+	
+	<select id="selectNoticeByFileName"  resultType="notice">
+		select * 
+		from notice 
+		where content like '%'||#{fileName}||'%'		
+	</select>
 </mapper>
 
 

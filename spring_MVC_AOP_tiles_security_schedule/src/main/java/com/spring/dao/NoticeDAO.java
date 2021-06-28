@@ -15,6 +15,8 @@ public interface NoticeDAO {
 	int selectSearchNoticeListCount(SearchCriteria cri) throws SQLException;
 
 	NoticeVO selectNoticeByNno(int nno) throws SQLException;
+	
+	NoticeVO selectNoticeByFileName(String fileName)throws SQLException;
 
 	// viewcnt 증가
 	void increaseViewCount(int nno) throws SQLException;

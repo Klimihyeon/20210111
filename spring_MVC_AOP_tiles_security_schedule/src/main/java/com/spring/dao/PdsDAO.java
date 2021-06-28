@@ -6,6 +6,8 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 
 import com.spring.command.SearchCriteria;
+import com.spring.dto.BoardVO;
+import com.spring.dto.NoticeVO;
 import com.spring.dto.PdsVO;
 
 public interface PdsDAO {
@@ -13,6 +15,7 @@ public interface PdsDAO {
 
 	List<PdsVO> selectPdsCriteria(SearchCriteria cri)	throws SQLException;
 	int selectPdsCriteriaTotalCount(SearchCriteria cri) throws SQLException;
+	public PdsVO selectPdsByFileName(String fileName) throws SQLException; 
 	
 	PdsVO selectPdsByPno(int pno)throws SQLException;
 	

@@ -11,6 +11,9 @@ public interface BoardService {
 	// 목록조회	
 	Map<String,Object> getBoardList(SearchCriteria cri)throws SQLException;
 	
+	//파일명으로 가져오기
+	BoardVO findFileInContent(String fileName)throws SQLException;
+	
 	// 상세보기
 	BoardVO getBoard(int bno)throws SQLException;	
 	BoardVO getBoardForModify(int bno)throws SQLException;

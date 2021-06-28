@@ -103,6 +103,12 @@
 	<select id="selectBoardSeqNext" resultType="int">
 		select board_seq.nextval as bno from dual
 	</select>
+	
+	<select id="selectBoardByFileName"  resultType="board">
+		select * 
+		from board 
+		where content like '%'||#{fileName}||'%'		
+	</select>
 </mapper>
 
 

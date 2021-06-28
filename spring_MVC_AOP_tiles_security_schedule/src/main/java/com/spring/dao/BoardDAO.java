@@ -7,12 +7,15 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.spring.command.SearchCriteria;
 import com.spring.dto.BoardVO;
+import com.spring.dto.NoticeVO;
 
 public interface BoardDAO {
 	
 	List<BoardVO> selectBoardCriteria(SearchCriteria cri) throws SQLException;
 
-	int selectBoardCriteriaTotalCount(SearchCriteria cri) throws SQLException;
+	int selectBoardCriteriaTotalCount(SearchCriteria cri) throws SQLException;	
+
+	public BoardVO selectBoardByFileName(String fileName) throws SQLException; 
 
 	BoardVO selectBoardByBno(int bno) throws SQLException;
 

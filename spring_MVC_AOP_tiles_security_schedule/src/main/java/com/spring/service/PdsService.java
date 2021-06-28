@@ -11,7 +11,10 @@ public interface PdsService {
 
 	// 리스트조회
 	Map<String, Object> getList(SearchCriteria cri) throws SQLException;
-
+	
+	//본문 이미지파일명으로 가져오기
+	PdsVO findFileInContent(String fileName)throws SQLException;
+	
 	// 글조회
 	PdsVO getPds(int pno) throws SQLException;
 

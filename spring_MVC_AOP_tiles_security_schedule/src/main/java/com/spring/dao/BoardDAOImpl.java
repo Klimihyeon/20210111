@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.spring.command.SearchCriteria;
 import com.spring.dto.BoardVO;
+import com.spring.dto.NoticeVO;
 
 public class BoardDAOImpl implements BoardDAO {
 	
@@ -65,8 +66,13 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public int selectBoardSeqNext() throws SQLException {
-		int seq_num=
-				session.selectOne("Board-Mapper.selectBoardSeqNext");
+		int seq_num=session.selectOne("Board-Mapper.selectBoardSeqNext");
 		return seq_num;
+	}
+
+	@Override
+	public BoardVO selectBoardByFileName(String fileName) throws SQLException {
+		BoardVO board = session.selectOne("Board-Mapper.selectBoardByFileName",fileName);
+		return board;
 	}
 }

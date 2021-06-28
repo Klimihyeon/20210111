@@ -86,4 +86,10 @@ public class BoardServiceImpl implements BoardService{
 
 			return dataMap;
 	}
+
+	@Override
+	public BoardVO findFileInContent(String fileName) throws SQLException {
+		BoardVO board = boardDAO.selectBoardByFileName(fileName);
+		return board;
+	}
 }

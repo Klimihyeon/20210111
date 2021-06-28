@@ -7,6 +7,7 @@ import org.apache.ibatis.session.RowBounds;
 import org.apache.ibatis.session.SqlSession;
 
 import com.spring.command.SearchCriteria;
+import com.spring.dto.BoardVO;
 import com.spring.dto.PdsVO;
 
 public class PdsDAOImpl implements PdsDAO {
@@ -66,6 +67,12 @@ public class PdsDAOImpl implements PdsDAO {
 	public int getSeqNextValue() throws SQLException {
 		int pno=session.selectOne("Pds-Mapper.selectPdsSeqNext");
 		return pno;
+	}
+
+	@Override
+	public PdsVO selectPdsByFileName(String fileName) throws SQLException {
+		PdsVO pds = session.selectOne("Pds-Mapper.selectPdsByFileName",fileName);
+		return pds;
 	}
 
 }
